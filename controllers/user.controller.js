@@ -58,7 +58,7 @@ exports.addUser = async (req, res, next) => {
         });
 
         const savedUser = await newUser.save();
-        res.status(200).json({ message: "User created!",user: savedUser });
+        res.status(200).json({ message: "User added" });
     } catch (e) {
       console.log(e);
         return res.status(403).json({ error: "Server error",statusCode:500 });
