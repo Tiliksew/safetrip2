@@ -14,7 +14,7 @@ exports.getUsers = async (req, res, next) => {
       }
       else {
 
-        const users = await User.find().sort({ name: -1 }).select({createdAt: 0,updatedAt: 0,isActive: 0, _id: 0, __v: 0});
+        const users = await User.find().sort({ id: -1 }).select({createdAt: 0,updatedAt: 0,isActive: 0, _id: 0, __v: 0});
         if (users.length<1) {
           return res
             .status(404)
@@ -31,11 +31,11 @@ exports.getUsers = async (req, res, next) => {
 exports.addUser = async (req, res, next) => {
     try {
         const { name, id,la,lt,s,a } = req.query;
-        if (!name) {
-          return res
-            .status(403)
-            .json({ error: "Please provide name!", statusCode: 403 });
-        }
+        // if (!name) {
+        //   return res
+        //     .status(403)
+        //     .json({ error: "Please provide name!", statusCode: 403 });
+        // }
 
 
           if (!id) {
@@ -72,7 +72,7 @@ exports.addUser = async (req, res, next) => {
 
         
         const newUser = new User({
-            name: name,
+            // name: name,
             id: id,
             la: la,
             lt: lt,
