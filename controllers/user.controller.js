@@ -30,7 +30,7 @@ exports.getUsers = async (req, res, next) => {
 
 exports.addUser = async (req, res, next) => {
     try {
-        const { name, id } = req.query;
+        const { name, id,la,lt,s,a } = req.query;
         if (!name) {
           return res
             .status(403)
@@ -43,7 +43,26 @@ exports.addUser = async (req, res, next) => {
               .status(403)
               .json({ error: "Please provide id", statusCode: 403 });
           }
-
+          if (!lt) {
+            return res
+              .status(403)
+              .json({ error: "Please provide lt", statusCode: 403 });
+          }
+          if (!la) {
+            return res
+              .status(403)
+              .json({ error: "Please provide la", statusCode: 403 });
+          }
+          if (!a) {
+            return res
+              .status(403)
+              .json({ error: "Please provide a", statusCode: 403 });
+          }
+          if (!s) {
+            return res
+              .status(403)
+              .json({ error: "Please provide s", statusCode: 403 });
+          }
 
         const duplicateUser = await User.findOne({ id: id }).lean();
         if (duplicateUser) {
@@ -54,7 +73,11 @@ exports.addUser = async (req, res, next) => {
         
         const newUser = new User({
             name: name,
-            id: id
+            id: id,
+            la: la,
+            lt: lt,
+            speed: s,
+            acceleration: a
         });
 
         const savedUser = await newUser.save();
