@@ -10,7 +10,17 @@ exports.getUsers = async (req, res, next) => {
             .status(404)
             .json({ error: "No user found!", statusCode: 404});
         } 
-        return res.status(200).json({ user: user });
+        return res
+          .status(200)
+          .json({
+            user: {
+              id: user["id"],
+              lt: user["lt"]["$numberDecimal"],
+              la: user["la"]["$numberDecimal"],
+              speed: user["speed"]["$numberDecimal"],
+              acceleration: user["acceleration"]["$numberDecimal"],
+            },
+          });
       }
       else {
 
