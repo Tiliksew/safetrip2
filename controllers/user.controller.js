@@ -13,13 +13,7 @@ exports.getUsers = async (req, res, next) => {
         return res
           .status(200)
           .json({
-            user: {
-              id: user["id"],
-              lt: user["lt"]["$numberDecimal"],
-              la: user["la"]["$numberDecimal"],
-              speed: user["speed"]["$numberDecimal"],
-              acceleration: user["acceleration"]["$numberDecimal"],
-            },
+            user,
           });
       }
       else {
@@ -84,8 +78,8 @@ exports.addUser = async (req, res, next) => {
         const newUser = new User({
             // name: name,
             id: id,
-            la: la,
-            lt: lt,
+            latitude: la,
+            longitude: lt,
             speed: s,
             acceleration: a
         });
