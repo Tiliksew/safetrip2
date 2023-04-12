@@ -68,16 +68,16 @@ exports.addUser = async (req, res, next) => {
               .status(403)
               .json({ error: "Please provide s", statusCode: 403 });
           }
-          if(!isInteger(id) ){
-            return res
-              .status(403)
-              .json({ error: "Please provide valid id", statusCode: 403 });
-          }
-          if(!isDecimal(a) || !isDecimal(s) || !isDecimal(lt) || !isDecimal(la)){
-            return res
-              .status(403)
-              .json({ error: "Please provide valid values", statusCode: 403 });
-          }
+          // if(!isInteger(id) ){
+          //   return res
+          //     .status(403)
+          //     .json({ error: "Please provide valid id", statusCode: 403 });
+          // }
+          // if(!isDecimal(a) || !isDecimal(s) || !isDecimal(lt) || !isDecimal(la)){
+          //   return res
+          //     .status(403)
+          //     .json({ error: "Please provide valid values", statusCode: 403 });
+          // }
         const duplicateUser = await User.findOne({ id: id }).lean();
         if (duplicateUser) {
           console.log(duplicateUser);
