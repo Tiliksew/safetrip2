@@ -31,9 +31,8 @@ const UserSchema = new mongoose.Schema(
       get: getDecimal,
       default: 0,
     },
-    isActive: { type: Boolean, default: true },
   },
-  { timestamps: true, toJSON: { getters: true } }
+  { timestamps: { createdAt: true, updatedAt: false }, toJSON: { getters: true } }
 );
 
 module.exports = mongoose.model('User', UserSchema);

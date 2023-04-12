@@ -5,7 +5,7 @@ exports.getUsers = async (req, res, next) => {
         const { id } = req.query;
     try {
       if(id){
-        const user = await User.findOne({id:id}).select({createdAt: 0,updatedAt: 0,isActive: 0, _id: 0, __v: 0});
+        const user = await User.findOne({id:id}).select({createdAt: 0,updatedAt: 0, _id: 0, __v: 0});
         if (!user) {
           return res
             .status(404)
@@ -19,7 +19,7 @@ exports.getUsers = async (req, res, next) => {
       }
       else {
 
-        const users = await User.find().sort({ id: -1 }).select({createdAt: 0,updatedAt: 0,isActive: 0, _id: 0, __v: 0});
+        const users = await User.find().sort({ id: -1 }).select({createdAt: 0,updatedAt: 0, _id: 0, __v: 0});
         if (users.length<1) {
           return res
             .status(404)
