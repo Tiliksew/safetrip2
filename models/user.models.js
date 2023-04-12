@@ -7,13 +7,13 @@ const { Schema} = mongoose
 const UserSchema = new mongoose.Schema(
   {
     id: { type: Schema.Types.Number, validate: [isInteger, "Invalid Value"],default: null },
-    lt: {
+    latitude: {
       type: Schema.Types.Decimal128,
       validate: [isDecimal, "Value must be decimal"],
       get: getDecimal,
       default: 0,
     },
-    la: {
+    longitude: {
       type: Schema.Types.Decimal128,
       validate: [isDecimal, "Value must be decimal"],
       get: getDecimal,
