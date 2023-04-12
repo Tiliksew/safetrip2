@@ -17,7 +17,7 @@ app.use(express.json());
 app.use("/", userRoutes);
 
 app.use("*", (req, res) => {
-  res.status(200).json({message: "Hello Rahul Tanwar(SafeTrip2 ). Welcome to my api"});
+  res.status(200).json({message: "Hello Rahul Tanwar(SafeTrip2). Welcome to my api"});
 });
 
 
